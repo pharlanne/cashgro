@@ -1,0 +1,49 @@
+
+<h3>total number of transactions</h3>
+<%= @account.total_number_of_transactions %>
+<br>
+<h3>total expenditure </h3>
+<%= @account.total_transactions_cash %>
+
+<h3>by cat</h3>
+<ul>
+
+<% @account.tags.each do |tag| %>
+  <li><%= tag.name %> | <%= @account.cash_by_tag(tag.id) %></li>
+<% end %>
+</ul>
+<h3>view transactions per date</h3>
+
+<form method="get" action="/accounts">
+  <label>Start:</label>
+  <input type="date" name="start">
+  <label>End:</label>
+  <input type="date" name="end">
+  <input type="submit"></input>
+</form>
+
+<% if params['start'] && params['end'] %>
+  <% @account.transactions_range( params['start'], params['end'] ).each do |transaction| %>
+    <%= transaction.amount %><%= transaction.merchant.name %>
+
+  )
+    <table>
+      <thead>
+        <tr>
+          <th>retailer</th>
+          <th>category</th>
+          <th>amount</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <td><%= transaction.merchant.name %></td>
+            <td><%= transaction.tag.name%></td>
+            <td><%= transaction.amount%></td> 
+          </tr>
+        <%  %>
+      </tbody>
+    </table>
+  <% end %>
+<% end %>
+

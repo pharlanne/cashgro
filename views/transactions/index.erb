@@ -1,0 +1,35 @@
+<p>all transactions</p>
+<a href="/">home</a>
+<a href="transactions/new">add a transaction</a><br>
+<br>
+<% @transactions.each do |transaction| %>
+
+<table>
+  <thead>
+    <tr>
+      <th>date</th>
+      <th>retailer</th>
+      <th>category</th>
+      <th>amount</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><%= transaction.select_date %></td>
+        <td><%= transaction.merchant.name %></td>
+        <td><%= transaction.tag.name%></td>
+        <td><%= transaction.amount%></td> 
+      </tr>
+    <%  %>
+  </tbody>
+</table>
+
+<a href="/transactions/<%= transaction.id %>">edit transaction</a>
+
+<form action="transactions/<%= transaction.id %>/delete" method="post"> 
+<input type="submit" value="delete">
+</form>
+
+<hr>
+<% end %>
+

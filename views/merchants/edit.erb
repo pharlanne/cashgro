@@ -1,0 +1,12 @@
+<h3>Edit Retailer</h3>
+
+<form action="/merchants/<%= @merchant.id %>" method ="post">
+
+<label for="name">name:</label>
+<input type="text" name="name" value="<%= @merchant.name %>">
+
+<input type="submit" value="update">
+</form>
+
+<a href="/merchants">back</a>
+

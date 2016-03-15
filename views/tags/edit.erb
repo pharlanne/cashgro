@@ -1,0 +1,12 @@
+<h3>Edit Category</h3>
+
+<form action="/tags/<%= @tag.id %>" method ="post">
+
+<label for="name">name:</label>
+<input type="text" name="name" value="<%= @tag.name %>">
+
+<input type="submit" value="update">
+</form>
+
+<a href="/tags">back</a>
+

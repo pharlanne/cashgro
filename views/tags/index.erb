@@ -1,0 +1,19 @@
+
+<a href="/">home</a>
+<a href="tags/new">add a category</a><br>
+<br>
+<h3>all categories</h3>
+<% @tags.each do |tag| %>
+<br>
+<b>Name:</b>
+<p><%= tag.name %></p>
+
+<a href="/tags/<%= tag.id %>">edit category</a>
+
+<form action="/tags/<%= tag.id %>/delete" method="post"> 
+<input type="submit" value="delete">
+</form>
+
+<hr>
+<% end %>
+

@@ -1,0 +1,31 @@
+<p>Add a Transaction</p>
+
+<a href="/">home</a>
+
+<form action="/transactions" method="post">
+
+<label>Date</label>
+  <input type="date" name="select_date">
+
+<label for="merchant">retailer:</label>
+  <select name="merchant_id">
+    <% @merchants.each do |merchant| %>
+      <option value="<%= merchant.id %>"><%= merchant.name %></option>
+    <% end %>
+  </select>
+
+<label for="tag">category:</label>
+  <select name="tag_id">
+  <% @tags.each do |tag| %>
+  <option value="<%= tag.id %>"><%= tag.name %></option>
+  <% end %>
+</select>
+
+<label>amount</label>
+<input type="number" step="any" name="amount">
+
+<label>spend limit</label>
+<input type="number" step="any" name="tag_spend_limit">
+
+<input type="submit" value="add">
+</form>
