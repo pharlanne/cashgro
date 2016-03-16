@@ -74,10 +74,14 @@ class TestAccount <MiniTest::Test
     assert_equal(2,result.length)
   end
 
-
   def test_transactions_range__none
     result = @account.transactions_range('2016-02-01','2016-02-08')
     assert_equal(0,result.length)
+  end
+
+  def test_filter_range_tag_one
+    result = @account.filter_range_tag('2016-02-01','2016-02-08',@tag1.id)
+    assert_equal(1,result.length)
   end
 
 end
