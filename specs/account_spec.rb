@@ -79,9 +79,29 @@ class TestAccount <MiniTest::Test
     assert_equal(0,result.length)
   end
 
-  def test_filter_range_tag_one
+  def test_filter_range_tag__none
     result = @account.filter_range_tag('2016-02-01','2016-02-08',@tag1.id)
+    assert_equal(0,result.length)
+  end
+
+  def test_filter_range_tag__one
+    result = @account.filter_range_tag('2016-03-01','2016-03-08',@tag1.id)
     assert_equal(1,result.length)
+  end
+
+  def test_filter_range_merchant__one
+    result = @account.filter_range_tag('2016-03-01','2016-03-08',@merchant1.id)
+    assert_equal(1,result.length)
+  end
+
+  def test_filter_range_merchant__none
+    result = @account.filter_range_tag('2016-02-01','2016-02-08',@merchant1.id)
+    assert_equal(0,result.length)
+  end
+
+  def test_filter_range_merchant__invalid_merchant
+    result = @account.filter_range_tag('2016-02-01','2016-02-08',-1)
+    assert_equal(0,result.length)
   end
 
 end
