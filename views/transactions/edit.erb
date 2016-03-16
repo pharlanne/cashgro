@@ -22,6 +22,9 @@
     <label>amount</label>
     <input type="number" name="amount" value="<%= @transaction.amount %>">
 
+    <label>spend limit</label>
+    <input type="number" step="any" name="tag_spend_limit" value="<%= @transaction.tag_spend_limit %>">
+
     <input type="submit" value="update">
   </form>
 

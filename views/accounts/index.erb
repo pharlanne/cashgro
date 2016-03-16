@@ -1,49 +1,97 @@
+<section class="account_summary">
+    <!-- <div class="trans_tot">
+      <h4>overall number of transactions</h4>
+      <%= @account.total_number_of_transactions %>
+    </div>
 
-<h3>total number of transactions</h3>
-<%= @account.total_number_of_transactions %>
-<br>
-<h3>total expenditure </h3>
-<%= @account.total_transactions_cash %>
+    <div class="exp_tot">
+      <h4>overall expenditure </h4>
+      <%= @account.total_transactions_cash %>
+    </div> -->
 
-<h3>by cat</h3>
-<ul>
 
-<% @account.tags.each do |tag| %>
-  <li><%= tag.name %> | <%= @account.cash_by_tag(tag.id) %></li>
-<% end %>
-</ul>
-<h3>view transactions per date</h3>
+    <h4>Expenditure by category</h4>
+      <form method="get" action="/accounts">
+        <label>Start:</label>
+        <input type="date" name="start">
+        <label>End:</label>
+        <input type="date" name="end">
+        <label>Tag:</label>
+        <select name="tag_id">
+          <option value="0">All Categories</option>
+          <% @account.tags.each do |tag| %>
+            <option value="<%= tag.id %>"><%= tag.name %></option>
+          <% end %>
+        </select>
+        <input type="submit"></input>
+      </form>
 
-<form method="get" action="/accounts">
-  <label>Start:</label>
-  <input type="date" name="start">
-  <label>End:</label>
-  <input type="date" name="end">
-  <input type="submit"></input>
-</form>
+      <% if params['tag_id'] %>
+        <section class="by_date">
+        <table border="1" style="width:76%">
+          <thead>
+            <tr>
+              <th>category</th>
+              <th>amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @account.filter_range_tag(params['start'], params['end'], params['tag_id']).each do |transaction| %>
+              <tr>
+                <!-- <td><%= transaction.merchant.name %> </td> -->
+                <td> <%= transaction.tag.name %></td>
+                <td> <%= transaction.amount %></td>
+              </tr>
+            <% end %>
+           </tbody>
+          </table>
+        </section>
+      <% end %>
+    
 
-<% if params['start'] && params['end'] %>
-  <% @account.transactions_range( params['start'], params['end'] ).each do |transaction| %>
-    <%= transaction.amount %><%= transaction.merchant.name %>
+    <h4>Expenditure by retailer</h4>
+      <form method="get" action="/accounts">
+        <label>Start:</label>
+        <input type="date" name="start">
+        <label>End:</label>
+        <input type="date" name="end">
+        <label>Merchant:</label>
+        <select name="merchant_id">
+          <option value="0">All Retailers</option>
+          <% @account.merchants.each do |merchant| %>
+            <option value="<%= merchant.id %>"><%= merchant.name %></option>
+          <% end %>
+        </select>
+        <input type="submit"></input>
+      </form>
 
-  )
-    <table>
-      <thead>
-        <tr>
-          <th>retailer</th>
-          <th>category</th>
-          <th>amount</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr>
-            <td><%= transaction.merchant.name %></td>
-            <td><%= transaction.tag.name%></td>
-            <td><%= transaction.amount%></td> 
-          </tr>
-        <%  %>
-      </tbody>
-    </table>
-  <% end %>
-<% end %>
+      <% if params['merchant_id'] && params['end'] %>
+        <section class="by_date">
+        <table border="1" style="width:76%">
+          <thead>
+            <tr>
+              <th>retailer</th>
+              <th>amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @account.filter_range_merchant(params['start'], params['end'], params['merchant_id']).each do |transaction| %>
+              <tr>
+                <td><%= transaction.merchant.name %> </td>
+                <td> <%= transaction.amount %></td>
+              </tr>
+            <% end %>
+           </tbody>
+          </table>
+        </section>
+      <% end %>
+</section>
+
+
+
+
+ <!--- End of account_summary section -->
+  <section class="pic2">
+    <img src="images/pie.png">
+  </section>
 

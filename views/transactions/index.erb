@@ -2,7 +2,7 @@
 <a href="/">home</a>
 <a href="transactions/new">add a transaction</a><br>
 <br>
-<% @transactions.each do |transaction| %>
+
 
 <table>
   <thead>
@@ -14,6 +14,7 @@
     </tr>
   </thead>
   <tbody>
+  <% @transactions.each do |transaction| %>
       <tr>
         <td><%= transaction.select_date %></td>
         <td><%= transaction.merchant.name %></td>
@@ -30,6 +31,6 @@
 <input type="submit" value="delete">
 </form>
 
-<hr>
+
 <% end %>
 

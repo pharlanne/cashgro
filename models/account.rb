@@ -32,6 +32,25 @@ class Account
     return @transactions.select { |transaction| transaction.select_date >= from && transaction.select_date <= to }
   end
 
+  # def transaction_tag(transaction, tag_id)
+  #   return transaction if tag_id == 0
+  #   return transaction.select{|transaction| transaction.tag_id}
+  # end
+
+  def filter_range_tag(from, to, tag_id)
+    result = transactions_range(from,to)
+    return result if tag_id.to_i == 0
+    print "here:", result.select{|transaction| transaction.tag_id == tag_id.to_i }
+    return result.select{|transaction| transaction.tag_id == tag_id.to_i }
+  end
+
+  def filter_range_merchant(from, to, merchant_id)
+    result = transactions_range(from,to)
+    return result if merchant_id.to_i == 0
+    # print "here:", result.select{|transaction| transaction.tag_id == tag_id.to_i }
+    return result.select{|transaction| transaction.merchant_id == merchant_id.to_i }
+  end
+
   def list_tags
     return @tags.map{|tag| tag.name}
   end
@@ -64,9 +83,10 @@ class Account
   end
 
   def spend_by_tag
-    result = {
-      "food" => 10,
-      "drinks" => 100
-    }
+    result = {}
+    @tags.each do |tag|
+      result[tag.name] = cash_by_tag(tag.id)
+    end
+    return result
   end
 end

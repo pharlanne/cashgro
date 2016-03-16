@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CashGro</title>
+  <link href='https://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+ <header>
+   <section class="row-header">
+     <div class="grid">
+       <a href ="/">
+        <h1 class="logo logo-alt">CashGro</h1>
+      </a>
+    </div>
+    <nav>
+     <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/tags">View Categories</a></li>
+      <li><a href="/merchants">View Retailers</a><li>
+        <li><a href="/transactions">View Transactions</a></li>
+        <li><a href="/accounts">View account summary</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+
+      <%=yield%>
+
+  <footer><small>&copy AB/ CashGro 2016</footer>
+</body>
+
+</html>

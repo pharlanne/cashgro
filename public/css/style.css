@@ -1,17 +1,163 @@
-header {
-  height: 100px;
-  background-color: red;
-  color: white;
-  font-size: 80px;
-  font-weight: 100;
+
+/*========================
+GENERAL (BODY)
+========================*/
+a {
+  text-decoration: none;
+}
+img {
+/*  max-width: 100%;*/
+ /* float: right;*/
 }
 
-body {
-  height: 800px;
-  background-color: green;
+/*========================
+GRID
+========================*/
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.grid {
+  margin: 0 auto;
+  width: 80%;
+}
+.container {
+  width: 50%;
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
+.row-header {
+  height: 120px;
+  background-color: #0FA8D2;
+  min-width: 80%;
+  padding: 30px 0 40px 0;
+  margin-bottom: 50px;
+}
+/*
+  ========================================
+  Clearfix
+  ========================================
+*/
+footer:before,
+footer:after {
+  content: "";
+  display: table;
+}
+footer:after {
+  clear: both;
+}
+footer {
+  clear: both;
+  *zoom: 1;
+}
+h1,
+h2,
+nav {
+  font-family: 'Nunito', Open Sans;
+}
+
+
+
+.logo {
+  float: left;
+  font-size: 40px;
+  font-weight: 400;
+  letter-spacing: .5px;
+  line-height: 44px;
+  margin-top: 0;
+  margin-bottom: 50px;
+  padding: 0 0 0 0;
+  color: #fff;
+  position: relative;
+  top: 10px;
+  left:-50px;
+}
+
+nav {
+  text-align:center;
+  padding: 10px 0;
+  margin: 10px 0 0;
+}
+nav ul {
+  float: right;
+  list-style:none;
+  margin: 0 10px;
+  padding: 0;
+}
+nav li {
+  display: inline-block;
+  text-transform:uppercase;
+}
+nav a {
+  color:#fff;
+  font-weight: 400;
+  padding: 15px 10px;
+}
+nav a:hover {
+  color: #5144a6;
 }
 
 footer{
-  height: 100px;
-  background-color: red;
+  height: 120px;
+  background-color: #0FA8D2;
+  margin-top: 50px;
+  color: white;
+  font-size: 16px;
+}
+
+/*============================================
+  homepage
+  ===========================================*/
+  
+  .pic img {
+    float:right;
+  }
+  .ad {
+    float: left;
+    width: 55;
+    margin-left: 20px;
+  }
+
+  .ad h1 {
+  font-size: 26px;
+  color: #104E8B;
+  text-align: center;
+  margin-left: 50px;
+  }
+  .ad h4 {
+      color: #104E8B;
+      font-family: 'Nunito', Open Sans;
+      font-size: 16px;
+      font-style: italic;
+      text-align: center;
+  }
+
+ .ad li{
+   font-family: 'Nunito', Open Sans;
+   color: #104E8B;
+  }
+
+.account_summary{
+ float: left;
+ width: 60%;
+ margin-left: 20px;
+}
+.account_summary h4{
+  color: #104E8B;
+  font-family: 'Nunito', Open Sans;
+}
+
+.pic2 img{
+  display: block;
+  margin: 0 auto;
+}
+
+.trans_tot,
+.exp_tot {
+  line-height: 1px;
 }
