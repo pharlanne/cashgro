@@ -16,14 +16,14 @@ class TestAccount <MiniTest::Test
     @merchants = [@merchant1, @merchant2]
 
     @transaction1 = Transaction.new({
-      'select_date'=> '07-03-2016',
+      'select_date'=> '2016-03-07',
       'merchant_id' => @merchant1.id,
       'tag_id'=> @tag1.id,
       'amount' => 14.50,
       'limit' => 20.00
       })
     @transaction2 = Transaction.new({
-      'select_date'=> '08-03-2016',
+      'select_date'=> '2016-03-08',
       'merchant_id' => @merchant2.id,
       'tag_id'=> @tag2.id,
       'amount' => 20.00,
@@ -62,6 +62,22 @@ class TestAccount <MiniTest::Test
   def test_total_cash_by_tag
     result = @account.cash_by_tag(1)
     assert_equal(14.50,result)
+  end
+
+  def test_transactions_range__one
+    result = @account.transactions_range('2016-03-01','2016-03-07')
+    assert_equal(1,result.length)
+  end
+
+  def test_transactions_range__all
+    result = @account.transactions_range('2016-03-01','2016-03-08')
+    assert_equal(2,result.length)
+  end
+
+
+  def test_transactions_range__none
+    result = @account.transactions_range('2016-02-01','2016-02-08')
+    assert_equal(0,result.length)
   end
 
 end
