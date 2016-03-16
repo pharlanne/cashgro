@@ -1,19 +1,28 @@
+<div class="categories">
 
-<a href="/">home</a>
-<a href="tags/new">add a category</a><br>
-<br>
-<h3>all categories</h3>
-<% @tags.each do |tag| %>
-<br>
-<b>Name:</b>
-<p><%= tag.name %></p>
 
-<a href="/tags/<%= tag.id %>">edit category</a>
 
-<form action="/tags/<%= tag.id %>/delete" method="post"> 
-<input type="submit" value="delete">
-</form>
-
-<hr>
-<% end %>
-
+<h2>View all categories</h2>
+  <h4><a href="/tags/new">add category</a></h4>
+  <table>
+  <tbody>
+    <% @tags.each do |tag| %>
+      <tr>
+        <td><%=tag.name%></td>
+        <td><a href="/tags/<%= tag.id %>">edit category</a></td>
+        <td>
+        
+          
+          <td><form action="/tags/<%= tag.id %>/delete" method="post"> 
+            <input type="submit" value="delete">
+          </form>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+ 
+</table>
+</div>
+<section class="pic2">
+  <img src="images/trolley2.png">
+</section>

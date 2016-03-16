@@ -1,36 +1,33 @@
-<p>all transactions</p>
-<a href="/">home</a>
-<a href="transactions/new">add a transaction</a><br>
-<br>
+<div class="transactions">
 
 
-<table>
-  <thead>
-    <tr>
-      <th>date</th>
-      <th>retailer</th>
-      <th>category</th>
-      <th>amount</th>
-    </tr>
-  </thead>
+<h2>View all transactions</h2>
+  <h4><a href="/transactions/new">add transaction</a></h4>
+  <table>
   <tbody>
-  <% @transactions.each do |transaction| %>
+    <% @transactions.each do |transaction| %>
       <tr>
         <td><%= transaction.select_date %></td>
         <td><%= transaction.merchant.name %></td>
         <td><%= transaction.tag.name%></td>
         <td><%= transaction.amount%></td> 
+        <td><a href="/transactions/<%= transaction.id %>">edit transaction</a></td>
+        <td>
+          <form action="/transactions/<%= transaction.id %>/delete" method="post"> 
+            <input type="submit" value="delete">
+          </form>
+        </td>
       </tr>
-    <%  %>
+    <% end %>
   </tbody>
+ 
 </table>
 
-<a href="/transactions/<%= transaction.id %>">edit transaction</a>
-
-<form action="transactions/<%= transaction.id %>/delete" method="post"> 
-<input type="submit" value="delete">
-</form>
 
 
-<% end %>
 
+
+</div>
+<section class="pic2">
+  <img src="images/payment.png">
+</section>

@@ -13,16 +13,26 @@
    <section class="row-header">
      <div class="grid">
        <a href ="/">
-        <h1 class="logo logo-alt">CashGro</h1>
+        <h1 class="logo logo-alt"><img src="images/leaf.png">CashGro</h1>
+        
       </a>
     </div>
-    <nav>
+    <nav class="primary-nav">
      <ul>
-      <li><a href="/">Home</a></li>
-      <li><a href="/tags">View Categories</a></li>
-      <li><a href="/merchants">View Retailers</a><li>
-        <li><a href="/transactions">View Transactions</a></li>
-        <li><a href="/accounts">View account summary</a></li>
+      <!-- <li><a href="/">Home</a></li>
+      <li><a href="/tags">Categories</a></li>
+      <li><a href="/merchants"> Retailers</a><li>
+        <li><a href="/transactions">Transactions</a></li>
+        <li><a href="/accounts">Account Summary</a></li> -->
+        <li><a  href="/">home</a></li><li class="dropdown">
+            <a href="/" class="dropbtn">Set Account</a>
+            <div class="dropdown-content">
+              <a href="/tags">categories</a>
+              <a href="/merchants">retailers</a>
+              <a href="/tags">transactions</a>
+            </div>
+          </li>
+          <li><a href="/accounts">View Account</li><li><a href="/savings">Track Savings</li>
       </ul>
     </nav>
   </header>
@@ -30,7 +40,18 @@
 
       <%=yield%>
 
-  <footer><small>&copy AB/ CashGro 2016</footer>
+  <footer><small>&copy AB/ CashGro 2016
+  <nav class="secondary-nav">
+   <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/tags">Categories</a></li>
+    <li><a href="/merchants"> Retailers</a><li>
+      <li><a href="/transactions">Transactions</a></li>
+      <li><a href="/accounts">Account Summary</a></li>
+      <li><a href="/savings"</li>
+    </ul>
+  </nav>
+  </footer>
 </body>
 
 </html>

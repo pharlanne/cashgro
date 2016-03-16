@@ -41,14 +41,14 @@ class Account
     result = transactions_range(from,to)
     return result if tag_id.to_i == 0
     print "here:", result.select{|transaction| transaction.tag_id == tag_id.to_i }
-    return result.select{|transaction| transaction.tag_id == tag_id.to_i }
+    return result.select{|transaction| transaction.tag_id.to_i == tag_id.to_i }
   end
 
   def filter_range_merchant(from, to, merchant_id)
     result = transactions_range(from,to)
     return result if merchant_id.to_i == 0
-    # print "here:", result.select{|transaction| transaction.tag_id == tag_id.to_i }
-    return result.select{|transaction| transaction.merchant_id == merchant_id.to_i }
+    filtered = result.select{|transaction| transaction.merchant_id.to_i == merchant_id.to_i }
+    return filtered
   end
 
   def list_tags

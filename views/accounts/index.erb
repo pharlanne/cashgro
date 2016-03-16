@@ -8,9 +8,9 @@
       <h4>overall expenditure </h4>
       <%= @account.total_transactions_cash %>
     </div> -->
+   <a href="/accounts">reset</a>
 
-
-    <h4>Expenditure by category</h4>
+    <h2>Expenditure by category</h2>
       <form method="get" action="/accounts">
         <label>Start:</label>
         <input type="date" name="start">
@@ -28,7 +28,7 @@
 
       <% if params['tag_id'] %>
         <section class="by_date">
-        <table border="1" style="width:76%">
+        <table>
           <thead>
             <tr>
               <th>category</th>
@@ -49,7 +49,7 @@
       <% end %>
     
 
-    <h4>Expenditure by retailer</h4>
+    <h2>Expenditure by retailer</h2>
       <form method="get" action="/accounts">
         <label>Start:</label>
         <input type="date" name="start">
@@ -65,9 +65,9 @@
         <input type="submit"></input>
       </form>
 
-      <% if params['merchant_id'] && params['end'] %>
+      <% if params['merchant_id'] %>
         <section class="by_date">
-        <table border="1" style="width:76%">
+        <table>
           <thead>
             <tr>
               <th>retailer</th>
@@ -75,6 +75,7 @@
             </tr>
           </thead>
           <tbody>
+  
             <% @account.filter_range_merchant(params['start'], params['end'], params['merchant_id']).each do |transaction| %>
               <tr>
                 <td><%= transaction.merchant.name %> </td>

@@ -1,4 +1,4 @@
-<p>all retailers</p>
+<!-- <p>all retailers</p>
 
 <a href="/">home</a>
 <a href="merchants/new">add a retailer</a><br>
@@ -16,5 +16,31 @@
 <br>
 
 <hr>
-<% end %>
+<% end %> -->
+<!-- ======================= -->
+<div class="retailers">
 
+
+<h2>View all retailers</h2>
+  <h4><a href="/merchants/new>">add retailer</a></h4>
+  <table>
+  <tbody>
+    <% @merchants.each do |merchant| %>
+      <tr>
+        <td><%=merchant.name%></td>
+        <td><a href="/merchants/<%= merchant.id %>">edit retailer</a></td>
+
+        <td>
+          <form action="/merchants/<%= merchant.id %>/delete" method="post"> 
+            <input type="submit" value="delete">
+          </form>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+
+</table>
+</div>
+<section class="pic2">
+  <img src="images/retailers.png">
+</section>
